@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.route.chatapp.models.Message"/>
+    <variable
+        name="message"
+        type="Message" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/sender_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/message_content"
+            app:layout_constraintStart_toStartOf="@id/message_content"
+            android:text="@{message.senderName}"
+            android:layout_marginStart="10dp"
+            android:textSize="4dp"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/message_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/raduis_of_message_received"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sender_name"
+            android:padding="8dp"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:id="@+id/message_sent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{message.messageContent}"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/date_sent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/message_content"
+            app:layout_constraintStart_toStartOf="@id/message_content"
+            android:text="@{message.time.toString()}"
+            android:textSize="10sp"
+            android:textColor="@color/black" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
